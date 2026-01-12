@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
+    <title>AMG Store</title>
+    <!-- Description -->
+    <meta
+      name="description"
+      content="AMG Store Website | You can find whatever you want with best price ever"
+    />
+    <!-- Author -->
+    <meta name="author" content="Ahmed Morad" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Script -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="navbar">
+      <div class="navbarContainer">
+        <nav>
+          <div class="logo-box">
+            <!-- Menu Button -->
+            <button
+              id="menuBtn"
+              class="icon-btn"
+              aria-label="Open menu"
+              type="button"
+            >
+              <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <!-- Logo -->
+            <h2>AMG Store</h2>
+          </div>
+          <!-- Search large screens -->
+          <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input
+              id="searchTextPC"
+              type="text"
+              placeholder="Search essentials, groceries and more..."
+              aria-label="Search"
+            />
+          </div>
+          <!-- Icons -->
+          <div class="nav-icons">
+            <!-- Login -->
+            <div class="account-icons">
+              <i class="fa-regular fa-user" aria-hidden="true"></i>
+              <p class="linkBtnBox">
+                <a id="navbarSignUp" href="#" rel="noopener">Sign Up</a> |
+                <a id="navbarLogin" href="#" rel="noopener">Login</a>
+              </p>
+            </div>
+            <!-- Cart Icon -->
+            <div class="cartContainer">
+              <button
+                id="cartBtn"
+                class="icon-box icon-btn cartBox"
+                aria-label="View cart"
+                type="button"
+              >
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                <span>Cart</span>
+                <!-- Cart Modal -->
+              </button>
+              <div class="cartModal">
+                <div class="cartModalControl">
+                  <h3>Your Cart</h3>
+                  <i id="cartCloseBtn" class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="cartItemsContainer">
+                  <div class="cartItem">
+                    <div class="item">
+                      <div class="cartItemImage">
+                        <img
+                          src="./src/Smartphones/s24Ultra.png"
+                          alt="s24Ultra"
+                        />
+                      </div>
+                      <div class="cartItemDetails">
+                        <p class="itemName">S24Ultra</p>
+                        <p class="itemTotalPrice">Total: 225 EGP</p>
+                      </div>
+                    </div>
+                    <div class="itemQuantity">
+                      <button class="decreaseQty">-</button>
+                      <p class="quantity">1</p>
+                      <button class="increaseQty">+</button>
+                    </div>
+                  </div>
+                  <div class="cartSummary">
+                    <div class="totalAmountBox">
+                      <p>Total</p>
+                      <p>450 EGP</p>
+                    </div>
+                    <div class="checkout">
+                      <button>Proceed to checkout</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <!-- Search Mobile Screens -->
+        <div class="navbar-mobile">
+          <div class="search-container-mobile">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input
+              id="searchTextMobile"
+              type="text"
+              placeholder="Search essentials, groceries and more..."
+              aria-label="Search"
+            />
+          </div>
+          <button
+            class="icon-box icon-btn cartBoxMobile"
+            aria-label="View cart"
+            type="button"
+          >
+            <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+            <span>Cart</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Main -->
+      <main>
+        <h1>Welcome to AMG Store</h1>
+        <!-- Offers -->
+        <section class="offers">
+          <button class="previous" aria-label="Previous offer" type="button">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <!-- Dots -->
+          <!-- Offer -->
+          <div class="offerContainer">
+            <div class="offer">
+              <img
+                class="offer-image"
+                src="./src/Offers/offer-1.png"
+                alt="Laptops"
+              />
+              <img
+                class="offer-image"
+                src="./src/Offers/offer-2.png"
+                alt="Laptops"
+              />
+              <img
+                class="offer-image"
+                src="./src/Offers/offer-3.png"
+                alt="Laptops"
+              />
+              <img
+                class="offer-image"
+                src="./src/Offers/offer-4.png"
+                alt="Laptops"
+              />
+              <img
+                class="offer-image"
+                src="./src/Offers/offer-5.png"
+                alt="Laptops"
+              />
+            </div>
+          </div>
+          <div class="dots" role="tablist" aria-label="Offer indicators">
+            <button
+              class="dot activeDot"
+              aria-current="true"
+              aria-label="Slide 1"
+              type="button"
+            ></button>
+            <button class="dot" aria-label="Slide 2" type="button"></button>
+            <button class="dot" aria-label="Slide 3" type="button"></button>
+            <button class="dot" aria-label="Slide 4" type="button"></button>
+            <button class="dot" aria-label="Slide 5" type="button"></button>
+          </div>
+          <button class="next" aria-label="Next offer" type="button">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </section>
+        <!-- Smartphones -->
+        <section class="smartphones">
+          <header>
+            <h3>Grab thw best deal on <span>Smartphones</span></h3>
+            <a href="#">View All <i class="fa-solid fa-chevron-right"></i></a>
+          </header>
+          <div class="phoneCards">
+            <!-- From JavaScript -->
+          </div>
+        </section>
+        <!-- Top Categories -->
+        <section class="top-categories">
+          <header>
+            <h3>Shop From <span>Top Categories</span></h3>
+            <a href="#">View All <i class="fa-solid fa-chevron-right"></i></a>
+          </header>
+          <div class="categoriesContainer">
+            <article class="categoryContainer">
+              <div class="imageBox">
+                <img src="src/Categories/samrtphone.jpeg" alt="Mobiles" />
+              </div>
+              <h4>Smart Phones</h4>
+            </article>
+            <article class="categoryContainer">
+              <div class="imageBox">
+                <img src="src/Categories/lap.webp" alt="Laptop" />
+              </div>
+              <h4>Laptops</h4>
+            </article>
+            <article class="categoryContainer">
+              <div class="imageBox">
+                <img src="src/Categories/watch.webp" alt="Watch" />
+              </div>
+              <h4>Watches</h4>
+            </article>
+            <article class="categoryContainer">
+              <div class="imageBox">
+                <img src="src/Categories/beauty.webp" alt="Beauty" />
+              </div>
+              <h4>Beauty</h4>
+            </article>
+            <article class="categoryContainer">
+              <div class="imageBox">
+                <img src="src/Categories/frag.webp" alt="frag" />
+              </div>
+              <h4>Fragrances</h4>
+            </article>
+            <article class="categoryContainer">
+              <div class="imageBox">
+                <img src="src/Categories/furniture.jpg" alt="furniture" />
+              </div>
+              <h4>Furniture</h4>
+            </article>
+            <article class="categoryContainer">
+              <div class="imageBox">
+                <img src="src/Categories/sunglasses.jpeg" alt="sunglasses" />
+              </div>
+              <h4>Sunglasses</h4>
+            </article>
+          </div>
+        </section>
+        <!-- Electronic Brands -->
+        <section class="electronic-brands">
+          <header>
+            <h3>Top <span>Electronic Brands</span></h3>
+            <a href="#">View All <i class="fa-solid fa-chevron-right"></i></a>
+          </header>
+          <div class="brandsContainer">
+            <article class="brandContainer">
+              <img
+                src="https://cdn.grabon.in/gograbon/images/web-images/uploads/1606975243181/apple-offers.jpg"
+                alt="Mobiles"
+              />
+            </article>
+            <article class="brandContainer">
+              <img src="./src/Smartphones/xiaomi.png" alt="Xiaomi" />
+            </article>
+            <article class="brandContainer">
+              <img src="./src/Smartphones/realme.jpg" alt="realMe" />
+            </article>
+          </div>
+        </section>
+        <!-- Daily Essentials -->
+        <section class="daily-essentials">
+          <header>
+            <h3>Daily <span>Essentials</span></h3>
+            <a href="#">View All <i class="fa-solid fa-chevron-right"></i></a>
+          </header>
+          <div class="dailyEssBrandsContainer">
+            <article class="dailyEssBrandContainer">
+              <div class="imageBox">
+                <img src="src/Smartphones/vege.png" alt="Vegetables" />
+              </div>
+              <div class="dailyEssTextBox">
+                <p class="dailyEssTitle">Vegetables</p>
+                <p class="dailyEssDiscount">Up to 50% OFF</p>
+              </div>
+            </article>
+            <article class="dailyEssBrandContainer">
+              <div class="imageBox">
+                <img src="src/Smartphones/vege.png" alt="Vegetables" />
+              </div>
+              <div class="dailyEssTextBox">
+                <p class="dailyEssTitle">Vegetables</p>
+                <p class="dailyEssDiscount">Up to 50% OFF</p>
+              </div>
+            </article>
+            <article class="dailyEssBrandContainer">
+              <div class="imageBox">
+                <img src="src/Smartphones/vege.png" alt="Vegetables" />
+              </div>
+              <div class="dailyEssTextBox">
+                <p class="dailyEssTitle">Vegetables</p>
+                <p class="dailyEssDiscount">Up to 50% OFF</p>
+              </div>
+            </article>
+            <article class="dailyEssBrandContainer">
+              <div class="imageBox">
+                <img src="src/Smartphones/vege.png" alt="Vegetables" />
+              </div>
+              <div class="dailyEssTextBox">
+                <p class="dailyEssTitle">Vegetables</p>
+                <p class="dailyEssDiscount">Up to 50% OFF</p>
+              </div>
+            </article>
+            <article class="dailyEssBrandContainer">
+              <div class="imageBox">
+                <img src="src/Smartphones/vege.png" alt="Vegetables" />
+              </div>
+              <div class="dailyEssTextBox">
+                <p class="dailyEssTitle">Vegetables</p>
+                <p class="dailyEssDiscount">Up to 50% OFF</p>
+              </div>
+            </article>
+            <article class="dailyEssBrandContainer">
+              <div class="imageBox">
+                <img src="src/Smartphones/vege.png" alt="Vegetables" />
+              </div>
+              <div class="dailyEssTextBox">
+                <p class="dailyEssTitle">Vegetables</p>
+                <p class="dailyEssDiscount">Up to 50% OFF</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+      <!-- Modals -->
+      <div class="modal">
+        <!-- Login Modal -->
+        <div class="formContainer loginModal">
+          <h2>Welcome Back</h2>
+          <form action="#">
+            <div class="inputField emailInput">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="emailLogin"
+                placeholder="Enter your email..."
+              />
+            </div>
+            <div class="inputField passInput">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="passwordLogin"
+                placeholder="Password..."
+              />
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <a href="#" class="forgetPass">Forget Password?</a>
+            <button id="loginBtn" type="submit">Login</button>
+            <p class="signUpFromLoginModal">
+              Don't have account?
+              <a href="#" id="signUpFromLoginModal">Sign Up Now</a>
+            </p>
+          </form>
+        </div>
+        <!-- SignUp Modal -->
+        <div class="formContainer signUpModal">
+          <h2>Join Us Now</h2>
+          <form class="signUpForm">
+            <div class="inputField">
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                placeholder="Enter your first name..."
+              />
+            </div>
+            <div class="inputField">
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="Enter your last name..."
+              />
+            </div>
+            <div class="inputField emailInput">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="emailSignUp"
+                placeholder="Enter your email..."
+              />
+            </div>
+            <div class="inputField passInput">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="passwordSignUp"
+                placeholder="Password..."
+              />
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <div class="inputField">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="Password..."
+              />
+            </div>
+            <button id="signUpBtn" type="submit">Sign Up</button>
+            <p class="loginFromSignUpModal">
+              Already have account?
+              <a href="#" id="loginFromSignUpModal">Login Now</a>
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer></footer>
+    </div>
+  </body>
+</html>
