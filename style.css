@@ -1,5 +1,5 @@
 /* Font Import */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* Custom Variables */
 :root {
@@ -31,7 +31,7 @@
   outline: 2px solid var(--primary);
 }
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--bg-main);
 }
 a,
@@ -256,7 +256,7 @@ nav {
 .top-categories header::before,
 .electronic-brands header::before,
 .daily-essentials header::before {
-  content: "";
+  content: '';
   height: 3px;
   width: 275px;
   border-radius: 6px;
@@ -272,6 +272,8 @@ nav {
   color: var(--primary);
 }
 .phoneCards {
+  padding: 80px 0 0 0;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 24px;
@@ -288,7 +290,7 @@ nav {
   cursor: pointer;
 }
 .phoneCard:hover {
-  transform: translateY(-4px);
+  /* transform: translateY(-4px); */
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
   border-color: var(--primary);
 }
@@ -708,7 +710,70 @@ a:hover {
 .cartModalControl i:hover {
   color: var(--primary-hover);
 }
-
+.toTopButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  z-index: 30;
+  opacity: 0;
+  transform: translateY(100px);
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--bg-main);
+  transition: all 0.5s ease-in-out;
+}
+.toTopButton:hover {
+  background-color: var(--primary-hover);
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--success);
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 10px;
+  background-color: rgb(56, 138, 56);
+  color: var(--bg-main);
+  position: fixed;
+  right: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  top: 100px;
+  z-index: 14;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(500px);
+  opacity: 0;
+}
+.loaderContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 5px dotted var(--primary);
+  animation: spin 3s infinite both linear;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* Medium Screens */
 @media (min-width: 768px) {
   /* General */
@@ -891,11 +956,18 @@ a:hover {
   .daily-essentials header::before {
     width: 158px;
   }
+  .toast {
+    top: 60px;
+    right: 40px;
+    padding: 6px 20px 6px 10px;
+  }
   /* Daily Essentials End */
   /* End of Main */
 }
 @media (min-width: 535px) {
-  .categoriesContainer,.dailyEssBrandsContainer,.brandsContainer{
+  .categoriesContainer,
+  .dailyEssBrandsContainer,
+  .brandsContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }

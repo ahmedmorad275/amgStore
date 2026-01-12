@@ -1,89 +1,89 @@
 // show and close modal .........=
-const navbarSignUp = document.getElementById("navbarSignUp");
-const navbarLogin = document.getElementById("navbarLogin");
-const loginFromSignUpModal = document.getElementById("loginFromSignUpModal");
-const signUpFromLoginModal = document.getElementById("signUpFromLoginModal");
-const modal = document.querySelector(".modal");
-const loginModal = document.querySelector(".loginModal");
-const signUpModal = document.querySelector(".signUpModal");
-const navbar = document.querySelector(".navbar");
-const togglePasswordVisibility = document.querySelectorAll(".fa-eye");
+const navbarSignUp = document.getElementById('navbarSignUp');
+const navbarLogin = document.getElementById('navbarLogin');
+const loginFromSignUpModal = document.getElementById('loginFromSignUpModal');
+const signUpFromLoginModal = document.getElementById('signUpFromLoginModal');
+const modal = document.querySelector('.modal');
+const loginModal = document.querySelector('.loginModal');
+const signUpModal = document.querySelector('.signUpModal');
+const navbar = document.querySelector('.navbar');
+const togglePasswordVisibility = document.querySelectorAll('.fa-eye');
 function showModal(ele) {
-  navbar.style.position = "static";
-  modal.style.display = "flex";
-  ele.style.display = "block";
+  navbar.style.position = 'static';
+  modal.style.display = 'flex';
+  ele.style.display = 'block';
 }
 function closeModal() {
-  navbar.style.position = "sticky";
-  modal.style.display = "none";
-  loginModal.style.display = "none";
-  signUpModal.style.display = "none";
+  navbar.style.position = 'sticky';
+  modal.style.display = 'none';
+  loginModal.style.display = 'none';
+  signUpModal.style.display = 'none';
 }
-document.body.addEventListener("click", (e) => {
-  if (e.target.classList.contains("modal")) {
+document.body.addEventListener('click', (e) => {
+  if (e.target.classList.contains('modal')) {
     closeModal();
   }
 });
-document.body.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
+document.body.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
     closeModal();
   }
 });
 
-navbarSignUp.addEventListener("click", (e) => {
+navbarSignUp.addEventListener('click', (e) => {
   e.preventDefault();
   showModal(signUpModal);
 });
-navbarLogin.addEventListener("click", (e) => {
+navbarLogin.addEventListener('click', (e) => {
   e.preventDefault();
   showModal(loginModal);
 });
-signUpFromLoginModal.addEventListener("click", (e) => {
+signUpFromLoginModal.addEventListener('click', (e) => {
   e.preventDefault();
   closeModal();
   showModal(signUpModal);
 });
-loginFromSignUpModal.addEventListener("click", (e) => {
+loginFromSignUpModal.addEventListener('click', (e) => {
   e.preventDefault();
   closeModal();
   showModal(loginModal);
 });
 togglePasswordVisibility.forEach((ele) => {
-  ele.addEventListener("click", () => {
-    if (ele.classList.contains("fa-eye")) {
-      ele.classList.add("fa-eye-slash");
-      document.getElementById("passwordLogin").setAttribute("type", "text");
-      document.getElementById("passwordSignUp").setAttribute("type", "text");
-      ele.classList.remove("fa-eye");
+  ele.addEventListener('click', () => {
+    if (ele.classList.contains('fa-eye')) {
+      ele.classList.add('fa-eye-slash');
+      document.getElementById('passwordLogin').setAttribute('type', 'text');
+      document.getElementById('passwordSignUp').setAttribute('type', 'text');
+      ele.classList.remove('fa-eye');
     } else {
-      ele.classList.add("fa-eye");
-      document.getElementById("passwordLogin").setAttribute("type", "password");
+      ele.classList.add('fa-eye');
+      document.getElementById('passwordLogin').setAttribute('type', 'password');
       document
-        .getElementById("passwordSignUp")
-        .setAttribute("type", "password");
-      ele.classList.remove("fa-eye-slash");
+        .getElementById('passwordSignUp')
+        .setAttribute('type', 'password');
+      ele.classList.remove('fa-eye-slash');
     }
   });
 });
 // show and close modal .........=
 
 // slide offer Images .........=
-const previousSlideBtn = document.querySelector(".previous");
-const nextSlideBtn = document.querySelector(".next");
-const dots = document.querySelectorAll(".dot");
-const offer = document.querySelector(".offer");
-const offerContainer = document.querySelector(".offerContainer");
+const previousSlideBtn = document.querySelector('.previous');
+const nextSlideBtn = document.querySelector('.next');
+const dots = document.querySelectorAll('.dot');
+const offer = document.querySelector('.offer');
+const offerContainer = document.querySelector('.offerContainer');
 const totalSlides = dots.length;
 let currentSlide = 0;
 let autoPlayInterval;
 
 function updateActiveDot() {
   dots.forEach((dot) => {
-    dot.classList.remove("activeDot");
-    dot.setAttribute("aria-current", "false");
+    dot.classList.remove('activeDot');
+    dot.setAttribute('aria-current', 'false');
   });
-  dots[currentSlide].classList.add("activeDot");
-  dots[currentSlide].setAttribute("aria-current", "true");
+  dots[currentSlide].classList.add('activeDot');
+  dots[currentSlide].setAttribute('aria-current', 'true');
 }
 
 function updateSlidePosition() {
@@ -125,64 +125,64 @@ function resetAutoPlay() {
   startAutoPlay();
 }
 
-nextSlideBtn.addEventListener("click", () => {
+nextSlideBtn.addEventListener('click', () => {
   showNextSlide();
   resetAutoPlay();
 });
-previousSlideBtn.addEventListener("click", () => {
+previousSlideBtn.addEventListener('click', () => {
   showPreviousSlide();
   resetAutoPlay();
 });
 
 dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
+  dot.addEventListener('click', () => {
     goToSlide(index);
     resetAutoPlay();
   });
 });
 
-offerContainer.addEventListener("mouseenter", stopAutoPlay);
-offerContainer.addEventListener("mouseleave", startAutoPlay);
-offerContainer.addEventListener("focus", stopAutoPlay, true);
-offerContainer.addEventListener("blur", startAutoPlay, true);
+offerContainer.addEventListener('mouseenter', stopAutoPlay);
+offerContainer.addEventListener('mouseleave', startAutoPlay);
+offerContainer.addEventListener('focus', stopAutoPlay, true);
+offerContainer.addEventListener('blur', startAutoPlay, true);
 
 startAutoPlay();
 // slide offer Images .........=
 
 // Cart Functions .........=
-const cartBtn = document.getElementById("cartBtn");
-const cartBtnMobile = document.querySelector(".cartBoxMobile");
-const cartCloseBtn = document.getElementById("cartCloseBtn");
-const cartModalBox = document.querySelector(".cartModal");
+const cartBtn = document.getElementById('cartBtn');
+const cartBtnMobile = document.querySelector('.cartBoxMobile');
+const cartCloseBtn = document.getElementById('cartCloseBtn');
+const cartModalBox = document.querySelector('.cartModal');
 let showCartBox = false;
 function showCartToggle() {
   if (showCartBox) {
-    cartModalBox.style.display = "block";
+    cartModalBox.style.display = 'block';
   } else {
-    cartModalBox.style.display = "none";
+    cartModalBox.style.display = 'none';
   }
 }
 showCartToggle();
-cartBtn.addEventListener("click", () => {
+cartBtn.addEventListener('click', () => {
   showCartBox = true;
   showCartToggle();
 });
-cartBtnMobile.addEventListener("click", () => {
+cartBtnMobile.addEventListener('click', () => {
   showCartBox = true;
   showCartToggle();
 });
-cartCloseBtn.addEventListener("click", () => {
+cartCloseBtn.addEventListener('click', () => {
   showCartBox = false;
   showCartToggle();
 });
 // Cart Functions .........=
 
 // Getting smartPhones .........=
-const phoneCards = document.querySelector(".phoneCards");
+const phoneCards = document.querySelector('.phoneCards');
 function renderSmartPhones(data = []) {
   data.forEach((phone) => {
     phoneCards.insertAdjacentHTML(
-      "beforeend",
+      'beforeend',
       `
       <article class="phoneCard">
         <div class="phoneImage">
@@ -213,17 +213,26 @@ function renderSmartPhones(data = []) {
     );
   });
 }
+const loader = document.querySelector('.loaderContainer');
+
 async function getSmartPhones() {
   try {
     const response = await fetch(
-      "https://dummyjson.com/products/category/smartphones"
+      'https://dummyjson.com/products/category/smartphones'
     );
     if (!response.ok) {
       throw new Error(`Response Status: ${response.status}`);
     }
     const data = await response.json();
     const smartPhones = data.products.splice(0, 6);
-    renderSmartPhones(smartPhones);
+    if (!smartPhones) {
+      loader.style.display = 'flex';
+      phoneCards.style.padding = '80px 0 0 0';
+    } else {
+      loader.style.display = 'none';
+      phoneCards.style.padding = '0 0 0 0';
+      renderSmartPhones(smartPhones);
+    }
   } catch (error) {
     console.error(error);
   }
@@ -231,6 +240,37 @@ async function getSmartPhones() {
 
 getSmartPhones();
 // Getting smartPhones .........=
+
+// To Top Button .........=
+const toTopBtn = document.getElementById('toTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY >= 100) {
+    toTopBtn.style.opacity = 1;
+    toTopBtn.style.transform = `translateY(0px)`;
+  } else {
+    toTopBtn.style.opacity = 0;
+    toTopBtn.style.transform = `translateY(100px)`;
+  }
+});
+toTopBtn.addEventListener('click', () => {
+  document.documentElement.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+});
+// To Top Button .........=
+
+// Toast Function .........=
+const toast = document.querySelector('.toast');
+// toTopBtn.addEventListener('click', () => {
+//   toast.style.transform = 'translateX(0px)';
+//   toast.style.opacity = 1;
+//   setTimeout(() => {
+//     toast.style.transform = 'translateX(500px)';
+//     toast.style.opacity = 0;
+//   }, 3000);
+// });
+// Toast Function .........=
 
 // const data = [
 //   {
