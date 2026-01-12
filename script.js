@@ -113,7 +113,7 @@ function goToSlide(index) {
 }
 
 function startAutoPlay() {
-  autoPlayInterval = setInterval(showNextSlide, 3000);
+  autoPlayInterval = setInterval(showNextSlide, 5000);
 }
 
 function stopAutoPlay() {
@@ -222,7 +222,7 @@ async function getSmartPhones() {
       throw new Error(`Response Status: ${response.status}`);
     }
     const data = await response.json();
-    const smartPhones = data.products.splice(0, 5);
+    const smartPhones = data.products.splice(0, 6);
     renderSmartPhones(smartPhones);
   } catch (error) {
     console.error(error);
