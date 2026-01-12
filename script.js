@@ -147,6 +147,26 @@ offerContainer.addEventListener('focus', stopAutoPlay, true);
 offerContainer.addEventListener('blur', startAutoPlay, true);
 
 startAutoPlay();
+// Mobile Swiper
+let current = 0;
+let moved = 0;
+let diff;
+offer.addEventListener('touchstart', (e) => {
+  current = e.touches[0].clientX;
+});
+offer.addEventListener('touchmove', (e) => {
+  moved = e.touches[0].clientX;
+  diff = moved - current;
+});
+offer.addEventListener('touchend', () => {
+  if (diff < -50) {
+    showNextSlide();
+    resetAutoPlay();
+  } else if (diff > 50) {
+    showPreviousSlide();
+    resetAutoPlay();
+  }
+});
 // slide offer Images .........=
 
 // Cart Functions .........=
