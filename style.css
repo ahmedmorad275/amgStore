@@ -272,8 +272,6 @@ nav {
   color: var(--primary);
 }
 .phoneCards {
-  padding: 80px 0 0 0;
-  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 24px;
@@ -753,8 +751,7 @@ a:hover {
   opacity: 0;
 }
 .loaderContainer {
-  position: absolute;
-  inset: 0;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -966,9 +963,12 @@ a:hover {
 }
 @media (min-width: 535px) {
   .categoriesContainer,
-  .dailyEssBrandsContainer,
   .brandsContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+  .dailyEssBrandsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
