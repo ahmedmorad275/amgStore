@@ -70,31 +70,18 @@
                 type="button">
                 <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                 <span>Cart</span>
-                <!-- Cart Modal -->
+                <!-- Cart Items Quantity -->
+                <span class="cartItemQty">0</span>
               </button>
+              <!-- Cart Modal -->
               <div class="cartModal">
                 <div class="cartModalControl">
                   <h3>Your Cart</h3>
                   <i id="cartCloseBtn" class="fa-solid fa-xmark"></i>
                 </div>
                 <div class="cartItemsContainer">
-                  <div class="cartItem">
-                    <div class="item">
-                      <div class="cartItemImage">
-                        <img
-                          src="./src/Smartphones/s24Ultra.png"
-                          alt="s24Ultra" />
-                      </div>
-                      <div class="cartItemDetails">
-                        <p class="itemName">S24Ultra</p>
-                        <p class="itemTotalPrice">Total: 225 EGP</p>
-                      </div>
-                    </div>
-                    <div class="itemQuantity">
-                      <button class="decreaseQty">-</button>
-                      <p class="quantity">1</p>
-                      <button class="increaseQty">+</button>
-                    </div>
+                  <div class="cartItemsBox">
+                    <!-- From JavaScript -->
                   </div>
                   <div class="cartSummary">
                     <div class="totalAmountBox">
@@ -126,6 +113,7 @@
             type="button">
             <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
             <span>Cart</span>
+            <span class="cartItemQty" id="cartItemQty">0</span>
           </button>
         </div>
       </div>
@@ -359,7 +347,7 @@
       <!-- Toast -->
       <div class="toast">
         <i class="fa-solid fa-check"></i>
-        <p>Item added to cart successfully</p>
+        <p class="toastText"></p>
       </div>
       <!-- Footer -->
       <footer></footer>

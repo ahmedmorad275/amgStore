@@ -195,6 +195,9 @@ cartCloseBtn.addEventListener('click', () => {
   showCartBox = false;
   showCartToggle();
 });
+
+const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+
 // Cart Functions .........=
 
 // Getting smartPhones .........=
@@ -240,7 +243,7 @@ function renderSmartPhones(data = []) {
             } EGP</span>
           </div>
           <div class='addToCart'>
-            <button id='addToCart'>Add to cart</button>
+            <button class='addToCartBtn' data-id=${phone.id}>Add to cart</button>
           </div>
         </div>
         <div class="discountBox">
@@ -251,8 +254,6 @@ function renderSmartPhones(data = []) {
     );
   });
 }
-const loader = document.querySelector('.loaderContainer');
-
 async function getSmartPhones() {
   showLoader(phoneCards);
   try {
@@ -264,7 +265,16 @@ async function getSmartPhones() {
     }
     const data = await response.json();
     const smartPhones = data.products.splice(0, 6);
+    localStorage.setItem('smartPhones', JSON.stringify(smartPhones));
     renderSmartPhones(smartPhones);
+    const addToCartBtns = document.querySelectorAll('.addToCartBtn');
+    addToCartBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.target.classList.add('disabled')
+        const item = smartPhones.find((ele) => ele.id == e.target.dataset.id);
+        addToCart(item);
+      });
+    });
   } catch (error) {
     console.error(error);
   } finally {
@@ -296,14 +306,17 @@ toTopBtn.addEventListener('click', () => {
 
 // Toast Function .........=
 const toast = document.querySelector('.toast');
-// toTopBtn.addEventListener('click', () => {
-//   toast.style.transform = 'translateX(0px)';
-//   toast.style.opacity = 1;
-//   setTimeout(() => {
-//     toast.style.transform = 'translateX(500px)';
-//     toast.style.opacity = 0;
-//   }, 3000);
-// });
+const toastText = document.querySelector('.toastText');
+function showToast(ele) {
+  toastText.textContent = `${ele.name} added to cart successfully`;
+  toast.style.transform = 'translateX(0px)';
+  toast.style.opacity = 1;
+  setTimeout(() => {
+    toast.style.transform = 'translateX(500px)';
+    toast.style.opacity = 0;
+  }, 3000);
+}
+
 // Toast Function .........=
 
 // Daily Essentials .........=
@@ -350,3 +363,62 @@ async function getDailyEssentials() {
 }
 getDailyEssentials();
 // Daily Essentials .........=
+
+function addToCart(item) {
+  const existingItem = cart.find((ele) => ele.id == item.id);
+  if (existingItem) return;
+  const newCartItem = {
+    id: item.id,
+    name: item.title,
+    image: item.images[2],
+    qty: 1,
+    price:
+      Math.round(item.price * 48) -
+      Math.round(
+        (Math.round(item.price * 48) * Math.round(item.discountPercentage)) /
+          100
+      ),
+  };
+  cart.push(newCartItem);
+  console.log(cart);
+  localStorage.setItem('cartItems', JSON.stringify(cart));
+  showToast(newCartItem);
+  updateCart();
+}
+
+const cartItemsBox = document.querySelector('.cartItemsBox');
+function updateCart() {
+  if (!cart) return;
+  const cartItemQty = document.querySelector('.cartItemQty');
+  const cartItemQtyMob = document.getElementById('cartItemQty');
+  cartItemQty.textContent = `${cart.length}`;
+  cartItemQtyMob.textContent = `${cart.length}`;
+  cartItemsBox.innerHTML = '';
+  cart.forEach((item) => {
+    cartItemsBox.insertAdjacentHTML(
+      'afterbegin',
+      `
+      <div class="cartItem">
+      <div class="item">
+      <div class="cartItemImage">
+      <img
+      src=${item.image}
+      alt='${item.name}' />
+      </div>
+      <div class="cartItemDetails">
+      <p class="itemName">${item.name}</p>
+      <p class="itemTotalPrice">Total: ${item.price} EGP</p>
+      </div>
+      </div>
+      <div class="itemQuantity">
+      <button class="decreaseQty">-</button>
+      <p class="quantity">${item.qty}</p>
+      <button class="increaseQty">+</button>
+                    </div>
+                    </div>
+      `
+    );
+  });
+}
+
+updateCart();
