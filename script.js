@@ -1,89 +1,89 @@
 // show and close modal .........=
-const navbarSignUp = document.getElementById('navbarSignUp');
-const navbarLogin = document.getElementById('navbarLogin');
-const loginFromSignUpModal = document.getElementById('loginFromSignUpModal');
-const signUpFromLoginModal = document.getElementById('signUpFromLoginModal');
-const modal = document.querySelector('.modal');
-const loginModal = document.querySelector('.loginModal');
-const signUpModal = document.querySelector('.signUpModal');
-const navbar = document.querySelector('.navbar');
-const togglePasswordVisibility = document.querySelectorAll('.fa-eye');
+const navbarSignUp = document.getElementById("navbarSignUp");
+const navbarLogin = document.getElementById("navbarLogin");
+const loginFromSignUpModal = document.getElementById("loginFromSignUpModal");
+const signUpFromLoginModal = document.getElementById("signUpFromLoginModal");
+const modal = document.querySelector(".modal");
+const loginModal = document.querySelector(".loginModal");
+const signUpModal = document.querySelector(".signUpModal");
+const navbar = document.querySelector(".navbar");
+const togglePasswordVisibility = document.querySelectorAll(".fa-eye");
 function showModal(ele) {
-  navbar.style.position = 'static';
-  modal.style.display = 'flex';
-  ele.style.display = 'block';
+  navbar.style.position = "static";
+  modal.style.display = "flex";
+  ele.style.display = "block";
 }
 function closeModal() {
-  navbar.style.position = 'sticky';
-  modal.style.display = 'none';
-  loginModal.style.display = 'none';
-  signUpModal.style.display = 'none';
+  navbar.style.position = "sticky";
+  modal.style.display = "none";
+  loginModal.style.display = "none";
+  signUpModal.style.display = "none";
 }
-document.body.addEventListener('click', (e) => {
-  if (e.target.classList.contains('modal')) {
+document.body.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal")) {
     closeModal();
   }
 });
-document.body.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
+document.body.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
     closeModal();
   }
 });
 
-navbarSignUp.addEventListener('click', (e) => {
+navbarSignUp.addEventListener("click", (e) => {
   e.preventDefault();
   showModal(signUpModal);
 });
-navbarLogin.addEventListener('click', (e) => {
+navbarLogin.addEventListener("click", (e) => {
   e.preventDefault();
   showModal(loginModal);
 });
-signUpFromLoginModal.addEventListener('click', (e) => {
+signUpFromLoginModal.addEventListener("click", (e) => {
   e.preventDefault();
   closeModal();
   showModal(signUpModal);
 });
-loginFromSignUpModal.addEventListener('click', (e) => {
+loginFromSignUpModal.addEventListener("click", (e) => {
   e.preventDefault();
   closeModal();
   showModal(loginModal);
 });
 togglePasswordVisibility.forEach((ele) => {
-  ele.addEventListener('click', () => {
-    if (ele.classList.contains('fa-eye')) {
-      ele.classList.add('fa-eye-slash');
-      document.getElementById('passwordLogin').setAttribute('type', 'text');
-      document.getElementById('passwordSignUp').setAttribute('type', 'text');
-      ele.classList.remove('fa-eye');
+  ele.addEventListener("click", () => {
+    if (ele.classList.contains("fa-eye")) {
+      ele.classList.add("fa-eye-slash");
+      document.getElementById("passwordLogin").setAttribute("type", "text");
+      document.getElementById("passwordSignUp").setAttribute("type", "text");
+      ele.classList.remove("fa-eye");
     } else {
-      ele.classList.add('fa-eye');
-      document.getElementById('passwordLogin').setAttribute('type', 'password');
+      ele.classList.add("fa-eye");
+      document.getElementById("passwordLogin").setAttribute("type", "password");
       document
-        .getElementById('passwordSignUp')
-        .setAttribute('type', 'password');
-      ele.classList.remove('fa-eye-slash');
+        .getElementById("passwordSignUp")
+        .setAttribute("type", "password");
+      ele.classList.remove("fa-eye-slash");
     }
   });
 });
 // show and close modal .........=
 
 // slide offer Images .........=
-const previousSlideBtn = document.querySelector('.previous');
-const nextSlideBtn = document.querySelector('.next');
-const dots = document.querySelectorAll('.dot');
-const offer = document.querySelector('.offer');
-const offerContainer = document.querySelector('.offerContainer');
+const previousSlideBtn = document.querySelector(".previous");
+const nextSlideBtn = document.querySelector(".next");
+const dots = document.querySelectorAll(".dot");
+const offer = document.querySelector(".offer");
+const offerContainer = document.querySelector(".offerContainer");
 const totalSlides = dots.length;
 let currentSlide = 0;
 let autoPlayInterval;
 
 function updateActiveDot() {
   dots.forEach((dot) => {
-    dot.classList.remove('activeDot');
-    dot.setAttribute('aria-current', 'false');
+    dot.classList.remove("activeDot");
+    dot.setAttribute("aria-current", "false");
   });
-  dots[currentSlide].classList.add('activeDot');
-  dots[currentSlide].setAttribute('aria-current', 'true');
+  dots[currentSlide].classList.add("activeDot");
+  dots[currentSlide].setAttribute("aria-current", "true");
 }
 
 function updateSlidePosition() {
@@ -125,40 +125,40 @@ function resetAutoPlay() {
   startAutoPlay();
 }
 
-nextSlideBtn.addEventListener('click', () => {
+nextSlideBtn.addEventListener("click", () => {
   showNextSlide();
   resetAutoPlay();
 });
-previousSlideBtn.addEventListener('click', () => {
+previousSlideBtn.addEventListener("click", () => {
   showPreviousSlide();
   resetAutoPlay();
 });
 
 dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
+  dot.addEventListener("click", () => {
     goToSlide(index);
     resetAutoPlay();
   });
 });
 
-offerContainer.addEventListener('mouseenter', stopAutoPlay);
-offerContainer.addEventListener('mouseleave', startAutoPlay);
-offerContainer.addEventListener('focus', stopAutoPlay, true);
-offerContainer.addEventListener('blur', startAutoPlay, true);
+offerContainer.addEventListener("mouseenter", stopAutoPlay);
+offerContainer.addEventListener("mouseleave", startAutoPlay);
+offerContainer.addEventListener("focus", stopAutoPlay, true);
+offerContainer.addEventListener("blur", startAutoPlay, true);
 
 startAutoPlay();
 // Mobile Swiper
 let current = 0;
 let moved = 0;
 let diff;
-offer.addEventListener('touchstart', (e) => {
+offer.addEventListener("touchstart", (e) => {
   current = e.touches[0].clientX;
 });
-offer.addEventListener('touchmove', (e) => {
+offer.addEventListener("touchmove", (e) => {
   moved = e.touches[0].clientX;
   diff = moved - current;
 });
-offer.addEventListener('touchend', () => {
+offer.addEventListener("touchend", () => {
   if (diff < -50) {
     showNextSlide();
     resetAutoPlay();
@@ -170,41 +170,39 @@ offer.addEventListener('touchend', () => {
 // slide offer Images .........=
 
 // Cart Functions .........=
-const cartBtn = document.getElementById('cartBtn');
-const cartBtnMobile = document.querySelector('.cartBoxMobile');
-const cartCloseBtn = document.getElementById('cartCloseBtn');
-const cartModalBox = document.querySelector('.cartModal');
+const cartBtn = document.getElementById("cartBtn");
+const cartBtnMobile = document.querySelector(".cartBoxMobile");
+const cartCloseBtn = document.getElementById("cartCloseBtn");
+const cartModalBox = document.querySelector(".cartModal");
 let showCartBox = false;
 function showCartToggle() {
   if (showCartBox) {
-    cartModalBox.style.display = 'block';
+    cartModalBox.style.display = "block";
   } else {
-    cartModalBox.style.display = 'none';
+    cartModalBox.style.display = "none";
   }
 }
 showCartToggle();
-cartBtn.addEventListener('click', () => {
+cartBtn.addEventListener("click", () => {
   showCartBox = true;
   showCartToggle();
 });
-cartBtnMobile.addEventListener('click', () => {
+cartBtnMobile.addEventListener("click", () => {
   showCartBox = true;
   showCartToggle();
 });
-cartCloseBtn.addEventListener('click', () => {
+cartCloseBtn.addEventListener("click", () => {
   showCartBox = false;
   showCartToggle();
 });
-
-const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-
+let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 // Cart Functions .........=
 
 // Getting smartPhones .........=
-const phoneCards = document.querySelector('.phoneCards');
+const phoneCards = document.querySelector(".phoneCards");
 function showLoader(ele) {
   ele.insertAdjacentHTML(
-    'beforeend',
+    "beforeend",
     `
     <div class="loaderContainer">
               <div class="loader"></div>
@@ -212,18 +210,16 @@ function showLoader(ele) {
     `
   );
 }
-
 function hideLoader(ele) {
-  const loader = ele.querySelector('.loaderContainer');
+  const loader = ele.querySelector(".loaderContainer");
   if (loader) {
     loader.remove();
   }
 }
-
 function renderSmartPhones(data = []) {
   data.forEach((phone) => {
     phoneCards.insertAdjacentHTML(
-      'beforeend',
+      "beforeend",
       `
       <article class="phoneCard">
         <div class="phoneImage">
@@ -243,9 +239,9 @@ function renderSmartPhones(data = []) {
             } EGP</span>
           </div>
           <div class='addToCart'>
-            <button class='addToCartBtn ${cart.find((ele) =>
-              ele.id == phone.id ? 'disables' : ''
-            )}' data-id=${phone.id}>Add to cart</button>
+            <button class='addToCartBtn' data-id=${
+              phone.id
+            }>Add to cart</button>
           </div>
         </div>
         <div class="discountBox">
@@ -260,7 +256,7 @@ async function getSmartPhones() {
   showLoader(phoneCards);
   try {
     const response = await fetch(
-      'https://dummyjson.com/products/category/smartphones'
+      "https://dummyjson.com/products/category/smartphones"
     );
     if (!response.ok) {
       throw new Error(`Response Status: ${response.status}`);
@@ -269,28 +265,25 @@ async function getSmartPhones() {
     const smartPhones = data.products.splice(0, 6);
     renderSmartPhones(smartPhones);
     disableAddedButtons();
-
-    const addToCartBtns = document.querySelectorAll('.addToCartBtn');
+    const addToCartBtns = document.querySelectorAll(".addToCartBtn");
     addToCartBtns?.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener("click", (e) => {
         const item = smartPhones.find((ele) => ele.id == e.target.dataset.id);
         addToCart(item);
       });
     });
-    localStorage.setItem('smartPhones', JSON.stringify(smartPhones));
   } catch (error) {
     console.error(error);
   } finally {
     hideLoader(phoneCards);
   }
 }
-
 getSmartPhones();
 // Getting smartPhones .........=
 
 // To Top Button .........=
-const toTopBtn = document.getElementById('toTop');
-window.addEventListener('scroll', () => {
+const toTopBtn = document.getElementById("toTop");
+window.addEventListener("scroll", () => {
   if (window.scrollY >= 100) {
     toTopBtn.style.opacity = 1;
     toTopBtn.style.transform = `translateY(0px)`;
@@ -299,37 +292,36 @@ window.addEventListener('scroll', () => {
     toTopBtn.style.transform = `translateY(100px)`;
   }
 });
-toTopBtn.addEventListener('click', () => {
+toTopBtn.addEventListener("click", () => {
   document.documentElement.scrollTo({
     top: 0,
-    behavior: 'smooth',
+    behavior: "smooth",
   });
 });
 // To Top Button .........=
 
 // Toast Function .........=
-const toast = document.querySelector('.toast');
-const toastText = document.querySelector('.toastText');
+const toast = document.querySelector(".toast");
+const toastText = document.querySelector(".toastText");
 function showToast(ele) {
   toastText.textContent = `${ele.name} added to cart successfully`;
-  toast.style.transform = 'translateX(0px)';
+  toast.style.transform = "translateX(0px)";
   toast.style.opacity = 1;
   setTimeout(() => {
-    toast.style.transform = 'translateX(500px)';
+    toast.style.transform = "translateX(500px)";
     toast.style.opacity = 0;
   }, 3000);
 }
-
 // Toast Function .........=
 
 // Daily Essentials .........=
 const dailyEssBrandsContainer = document.querySelector(
-  '.dailyEssBrandsContainer'
+  ".dailyEssBrandsContainer"
 );
 function renderDailyEssentials(data = []) {
   data.forEach((product) => {
     dailyEssBrandsContainer.insertAdjacentHTML(
-      'beforeend',
+      "beforeend",
       `
       <article class="dailyEssBrandContainer">
               <div class="imageBox">
@@ -350,7 +342,7 @@ async function getDailyEssentials() {
   showLoader(dailyEssBrandsContainer);
   try {
     const response = await fetch(
-      'https://dummyjson.com/products/category/groceries'
+      "https://dummyjson.com/products/category/groceries"
     );
     if (!response.ok) {
       throw new Error(`Response Status: ${response.status}`);
@@ -367,6 +359,7 @@ async function getDailyEssentials() {
 getDailyEssentials();
 // Daily Essentials .........=
 
+// Add to Cart Function .........=
 function addToCart(item) {
   const existingItem = cart.find((ele) => ele.id == item.id);
   if (existingItem) return;
@@ -383,26 +376,24 @@ function addToCart(item) {
       ),
   };
   cart.push(newCartItem);
-  console.log(cart);
-  localStorage.setItem('cartItems', JSON.stringify(cart));
+  localStorage.setItem("cartItems", JSON.stringify(cart));
   showToast(newCartItem);
   updateCart();
   disableAddedButtons();
 }
-
-const cartItemsBox = document.querySelector('.cartItemsBox');
+const cartItemsBox = document.querySelector(".cartItemsBox");
 function updateCart() {
   if (!cart) return;
-  const cartItemQty = document.querySelector('.cartItemQty');
-  const cartItemQtyMob = document.getElementById('cartItemQty');
+  const cartItemQty = document.querySelector(".cartItemQty");
+  const cartItemQtyMob = document.getElementById("cartItemQty");
   cartItemQty.textContent = `${cart.length}`;
   cartItemQtyMob.textContent = `${cart.length}`;
-  cartItemsBox.innerHTML = '';
+  cartItemsBox.innerHTML = "";
   cart.forEach((item) => {
     cartItemsBox.insertAdjacentHTML(
-      'afterbegin',
+      "afterbegin",
       `
-      <div class="cartItem">
+      <div class="cartItem" data-id=${item.id}>
       <div class="item">
       <div class="cartItemImage">
       <img
@@ -411,62 +402,103 @@ function updateCart() {
       </div>
       <div class="cartItemDetails">
       <p class="itemName">${item.name}</p>
-      <p class="itemTotalPrice">Total: ${item.price} EGP</p>
+      <p class="itemTotalPrice">Total: ${item.price * item.qty} EGP</p>
       </div>
       </div>
       <div class="itemQuantity">
-      <button class="decreaseQty" data-id=${item.id}>-</button>
+      <button class="decreaseQty">-</button>
       <p class="quantity">${item.qty}</p>
-      <button class="increaseQty" data-id=${item.id}>+</button>
+      <button class="increaseQty">+</button>
                     </div>
                     </div>
       `
     );
-    const decreaseBtn = document.querySelectorAll('.decreaseQty');
-    decreaseBtn.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const item = cart.find((ele) => ele.id == btn.dataset.id);
-        decrease(item);
-      });
+  });
+  updateQuantity();
+  updateTotalPrice()
+}
+updateCart();
+// Add to Cart Function .........=
+function updateTotalPrice(){
+  let total = 0;
+  const cardTotalPrice = document.getElementById("cartTotalPrice");
+  cart.forEach((item) => {
+    total = total + item.qty * item.price;
+  });
+  cardTotalPrice.textContent = `${total} EGP`;
+}
+function updateQuantity() {
+  const decrease = document.querySelectorAll(".decreaseQty");
+  const increase = document.querySelectorAll(".increaseQty");
+  increase.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = btn.closest(".cartItem").dataset.id;
+      const item = cart.find((ele) => ele.id == id);
+      const quantityText = btn.closest(".cartItem").querySelector(".quantity");
+      const totalPrice = btn
+        .closest(".cartItem")
+        .querySelector(".itemTotalPrice");
+      item.qty++;
+      totalPrice.textContent = `Total: ${item.price * item.qty} EGP`;
+      quantityText.textContent = item.qty;
+
+      localStorage.setItem("cartItems", JSON.stringify(cart));
+      updateTotalPrice()
+    });
+  });
+  decrease.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = btn.closest(".cartItem").dataset.id;
+      const cartItemBox = btn.closest(".cartItem");
+      const item = cart.find((ele) => ele.id == id);
+      const quantityText = cartItemBox.querySelector(".quantity");
+      const totalPrice = cartItemBox.querySelector(".itemTotalPrice");
+      item.qty--;
+      if (item.qty === 0) {
+        cartItemBox.remove();
+        cart = cart.filter((item) => item.qty >= 1);
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+        enableAddedButtons();
+        updateCart();
+      } else {
+        totalPrice.textContent = `Total: ${item.price * item.qty} EGP`;
+        quantityText.textContent = item.qty;
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+      }
+      updateTotalPrice()
     });
   });
 }
 
-function increase(ele) {
-  const item = cart.filter((item) => item.id == ele.id);
-  cart = [...cart, { ...item, qty: item.qty++ }];
-  updateCart();
-}
-function decrease(ele) {
-  let item = cart.filter((item) => item.id == ele.id);
-  cart = [...cart, { ...item, qty: item.qty-- }];
-  updateCart();
-}
-// function decrease(ele) {
-//   cart.map((item) => {
-//     if (item.id == ele.id) {
-//       return { ...item, qty: item.qty-- };
-//     } else {
-//       return item;
-//     }
-//   });
-//   updateCart();
-// }
-updateCart();
-
+// Disable Buttons Function .........=
 function disableAddedButtons() {
-  const buttons = document.querySelectorAll('.addToCartBtn');
+  const buttons = document.querySelectorAll(".addToCartBtn");
 
   buttons.forEach((btn) => {
     const id = btn.dataset.id;
+    const inCart = cart.find((item) => item.id == id);
 
-    const isInCart = cart.find((item) => item.id == id);
+    if (inCart) {
+      btn.classList.add("disabled");
+      btn.textContent = "Added";
+      btn.setAttribute("disabled", "true");
+    }
+  });
+}
+function enableAddedButtons() {
+  const buttons = document.querySelectorAll(".addToCartBtn");
 
-    if (isInCart) {
-      btn.classList.add('disabled');
-      btn.textContent = 'Added';
-      btn.disabled = true;
+  buttons.forEach((btn) => {
+    const id = btn.dataset.id;
+    const inCart = cart.find((item) => item.id == id);
+
+    if (!inCart) {
+      btn.classList.remove("disabled");
+      btn.textContent = "Add to cart";
+      btn.removeAttribute("disabled");
     }
   });
 }
 disableAddedButtons();
+enableAddedButtons();
+// Disable Buttons Function .........=
