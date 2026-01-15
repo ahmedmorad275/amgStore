@@ -243,7 +243,9 @@ function renderSmartPhones(data = []) {
             } EGP</span>
           </div>
           <div class='addToCart'>
-            <button class='addToCartBtn' data-id=${phone.id}>Add to cart</button>
+            <button class='addToCartBtn ${cart.find((ele) =>
+              ele.id == phone.id ? 'disables' : ''
+            )}' data-id=${phone.id}>Add to cart</button>
           </div>
         </div>
         <div class="discountBox">
@@ -265,16 +267,17 @@ async function getSmartPhones() {
     }
     const data = await response.json();
     const smartPhones = data.products.splice(0, 6);
-    localStorage.setItem('smartPhones', JSON.stringify(smartPhones));
     renderSmartPhones(smartPhones);
+    disableAddedButtons();
+
     const addToCartBtns = document.querySelectorAll('.addToCartBtn');
-    addToCartBtns.forEach((btn) => {
+    addToCartBtns?.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        e.target.classList.add('disabled')
         const item = smartPhones.find((ele) => ele.id == e.target.dataset.id);
         addToCart(item);
       });
     });
+    localStorage.setItem('smartPhones', JSON.stringify(smartPhones));
   } catch (error) {
     console.error(error);
   } finally {
@@ -384,6 +387,7 @@ function addToCart(item) {
   localStorage.setItem('cartItems', JSON.stringify(cart));
   showToast(newCartItem);
   updateCart();
+  disableAddedButtons();
 }
 
 const cartItemsBox = document.querySelector('.cartItemsBox');
@@ -411,14 +415,58 @@ function updateCart() {
       </div>
       </div>
       <div class="itemQuantity">
-      <button class="decreaseQty">-</button>
+      <button class="decreaseQty" data-id=${item.id}>-</button>
       <p class="quantity">${item.qty}</p>
-      <button class="increaseQty">+</button>
+      <button class="increaseQty" data-id=${item.id}>+</button>
                     </div>
                     </div>
       `
     );
+    const decreaseBtn = document.querySelectorAll('.decreaseQty');
+    decreaseBtn.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = cart.find((ele) => ele.id == btn.dataset.id);
+        decrease(item);
+      });
+    });
   });
 }
 
+function increase(ele) {
+  const item = cart.filter((item) => item.id == ele.id);
+  cart = [...cart, { ...item, qty: item.qty++ }];
+  updateCart();
+}
+function decrease(ele) {
+  let item = cart.filter((item) => item.id == ele.id);
+  cart = [...cart, { ...item, qty: item.qty-- }];
+  updateCart();
+}
+// function decrease(ele) {
+//   cart.map((item) => {
+//     if (item.id == ele.id) {
+//       return { ...item, qty: item.qty-- };
+//     } else {
+//       return item;
+//     }
+//   });
+//   updateCart();
+// }
 updateCart();
+
+function disableAddedButtons() {
+  const buttons = document.querySelectorAll('.addToCartBtn');
+
+  buttons.forEach((btn) => {
+    const id = btn.dataset.id;
+
+    const isInCart = cart.find((item) => item.id == id);
+
+    if (isInCart) {
+      btn.classList.add('disabled');
+      btn.textContent = 'Added';
+      btn.disabled = true;
+    }
+  });
+}
+disableAddedButtons();
