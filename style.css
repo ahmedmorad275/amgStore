@@ -1,5 +1,5 @@
 /* Font Import */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /* Custom Variables */
 :root {
@@ -27,11 +27,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+img {
+  max-width: 100%;
+  display: block;
+}
 :focus-visible {
   outline: 2px solid var(--primary);
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--bg-main);
 }
 a,
@@ -275,7 +279,7 @@ nav {
 .top-categories header::before,
 .electronic-brands header::before,
 .daily-essentials header::before {
-  content: '';
+  content: "";
   height: 3px;
   width: 275px;
   border-radius: 6px;
@@ -424,7 +428,7 @@ nav {
 }
 .brandsContainer {
   display: grid;
-  grid-template-columns: 1;
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 .brandContainer {
@@ -499,7 +503,6 @@ nav {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
   display: none;
   align-items: center;
   justify-content: center;
@@ -631,7 +634,7 @@ a:hover {
   flex-direction: column;
   gap: 6px;
   max-height: 320px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .cartItem {
   display: flex;
@@ -807,7 +810,6 @@ a:hover {
 .disabled:hover {
   background-color: var(--text-secondary) !important;
 }
-
 
 /* Medium Screens */
 @media (min-width: 768px) {
@@ -1011,4 +1013,3 @@ a:hover {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-

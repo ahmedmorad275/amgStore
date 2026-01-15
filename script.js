@@ -262,7 +262,7 @@ async function getSmartPhones() {
       throw new Error(`Response Status: ${response.status}`);
     }
     const data = await response.json();
-    const smartPhones = data.products.splice(0, 6);
+    const smartPhones = data.products.slice(0, 6);
     renderSmartPhones(smartPhones);
     disableAddedButtons();
     const addToCartBtns = document.querySelectorAll(".addToCartBtn");
@@ -348,7 +348,7 @@ async function getDailyEssentials() {
       throw new Error(`Response Status: ${response.status}`);
     }
     const data = await response.json();
-    const dailyEss = data.products.splice(0, 8);
+    const dailyEss = data.products.slice(0, 8);
     renderDailyEssentials(dailyEss);
   } catch (err) {
     console.error(err);
