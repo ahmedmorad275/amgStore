@@ -1,5 +1,5 @@
 /* Font Import */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* Custom Variables */
 :root {
@@ -35,7 +35,7 @@ img {
   outline: 2px solid var(--primary);
 }
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--bg-main);
 }
 a,
@@ -279,7 +279,7 @@ nav {
 .top-categories header::before,
 .electronic-brands header::before,
 .daily-essentials header::before {
-  content: "";
+  content: '';
   height: 3px;
   width: 275px;
   border-radius: 6px;
@@ -817,6 +817,69 @@ section {
   transform: translateY(40px);
 }
 
+.searchResultContiner,
+.searchResultContinerMobile {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 35px;
+  background-color: var(--input);
+  border: 1px solid var(--primary);
+  display: none;
+  z-index: 10;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+.searchResultItem {
+  padding: 6px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.searchResultItem:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+.searchItemText h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111827;
+}
+.searchItemText p {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.searchItemAdd,
+.searchItemAddMobile {
+  border: 1px solid var(--primary);
+  transition: var(--transition-base);
+  background-color: var(--primary);
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--bg-main);
+}
+.searchItemAdd:hover,
+.searchItemAddMobile:hover {
+  background-color: var(--primary-hover);
+}
+.searchItemDetails {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.searchItemImageBox {
+  background-color: var(--input);
+  padding: 5px;
+  border-radius: 10px;
+  width: 50px;
+}
+.searchItemDetails img {
+  width: 100%;
+  object-fit: contain;
+}
 /* Medium Screens */
 @media (min-width: 768px) {
   /* General */

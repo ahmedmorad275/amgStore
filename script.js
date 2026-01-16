@@ -1,89 +1,89 @@
 // show and close modal .........=
-const navbarSignUp = document.getElementById("navbarSignUp");
-const navbarLogin = document.getElementById("navbarLogin");
-const loginFromSignUpModal = document.getElementById("loginFromSignUpModal");
-const signUpFromLoginModal = document.getElementById("signUpFromLoginModal");
-const modal = document.querySelector(".modal");
-const loginModal = document.querySelector(".loginModal");
-const signUpModal = document.querySelector(".signUpModal");
-const navbar = document.querySelector(".navbar");
-const togglePasswordVisibility = document.querySelectorAll(".fa-eye");
+const navbarSignUp = document.getElementById('navbarSignUp');
+const navbarLogin = document.getElementById('navbarLogin');
+const loginFromSignUpModal = document.getElementById('loginFromSignUpModal');
+const signUpFromLoginModal = document.getElementById('signUpFromLoginModal');
+const modal = document.querySelector('.modal');
+const loginModal = document.querySelector('.loginModal');
+const signUpModal = document.querySelector('.signUpModal');
+const navbar = document.querySelector('.navbar');
+const togglePasswordVisibility = document.querySelectorAll('.fa-eye');
 function showModal(ele) {
-  navbar.style.position = "static";
-  modal.style.display = "flex";
-  ele.style.display = "block";
+  navbar.style.position = 'static';
+  modal.style.display = 'flex';
+  ele.style.display = 'block';
 }
 function closeModal() {
-  navbar.style.position = "sticky";
-  modal.style.display = "none";
-  loginModal.style.display = "none";
-  signUpModal.style.display = "none";
+  navbar.style.position = 'sticky';
+  modal.style.display = 'none';
+  loginModal.style.display = 'none';
+  signUpModal.style.display = 'none';
 }
-document.body.addEventListener("click", (e) => {
-  if (e.target.classList.contains("modal")) {
+document.body.addEventListener('click', (e) => {
+  if (e.target.classList.contains('modal')) {
     closeModal();
   }
 });
-document.body.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
+document.body.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
     closeModal();
   }
 });
 
-navbarSignUp.addEventListener("click", (e) => {
+navbarSignUp.addEventListener('click', (e) => {
   e.preventDefault();
   showModal(signUpModal);
 });
-navbarLogin.addEventListener("click", (e) => {
+navbarLogin.addEventListener('click', (e) => {
   e.preventDefault();
   showModal(loginModal);
 });
-signUpFromLoginModal.addEventListener("click", (e) => {
+signUpFromLoginModal.addEventListener('click', (e) => {
   e.preventDefault();
   closeModal();
   showModal(signUpModal);
 });
-loginFromSignUpModal.addEventListener("click", (e) => {
+loginFromSignUpModal.addEventListener('click', (e) => {
   e.preventDefault();
   closeModal();
   showModal(loginModal);
 });
 togglePasswordVisibility.forEach((ele) => {
-  ele.addEventListener("click", () => {
-    if (ele.classList.contains("fa-eye")) {
-      ele.classList.add("fa-eye-slash");
-      document.getElementById("passwordLogin").setAttribute("type", "text");
-      document.getElementById("passwordSignUp").setAttribute("type", "text");
-      ele.classList.remove("fa-eye");
+  ele.addEventListener('click', () => {
+    if (ele.classList.contains('fa-eye')) {
+      ele.classList.add('fa-eye-slash');
+      document.getElementById('passwordLogin').setAttribute('type', 'text');
+      document.getElementById('passwordSignUp').setAttribute('type', 'text');
+      ele.classList.remove('fa-eye');
     } else {
-      ele.classList.add("fa-eye");
-      document.getElementById("passwordLogin").setAttribute("type", "password");
+      ele.classList.add('fa-eye');
+      document.getElementById('passwordLogin').setAttribute('type', 'password');
       document
-        .getElementById("passwordSignUp")
-        .setAttribute("type", "password");
-      ele.classList.remove("fa-eye-slash");
+        .getElementById('passwordSignUp')
+        .setAttribute('type', 'password');
+      ele.classList.remove('fa-eye-slash');
     }
   });
 });
 // show and close modal .........=
 
 // slide offer Images .........=
-const previousSlideBtn = document.querySelector(".previous");
-const nextSlideBtn = document.querySelector(".next");
-const dots = document.querySelectorAll(".dot");
-const offer = document.querySelector(".offer");
-const offerContainer = document.querySelector(".offerContainer");
+const previousSlideBtn = document.querySelector('.previous');
+const nextSlideBtn = document.querySelector('.next');
+const dots = document.querySelectorAll('.dot');
+const offer = document.querySelector('.offer');
+const offerContainer = document.querySelector('.offerContainer');
 const totalSlides = dots.length;
 let currentSlide = 0;
 let autoPlayInterval;
 
 function updateActiveDot() {
   dots.forEach((dot) => {
-    dot.classList.remove("activeDot");
-    dot.setAttribute("aria-current", "false");
+    dot.classList.remove('activeDot');
+    dot.setAttribute('aria-current', 'false');
   });
-  dots[currentSlide].classList.add("activeDot");
-  dots[currentSlide].setAttribute("aria-current", "true");
+  dots[currentSlide].classList.add('activeDot');
+  dots[currentSlide].setAttribute('aria-current', 'true');
 }
 
 function updateSlidePosition() {
@@ -125,40 +125,40 @@ function resetAutoPlay() {
   startAutoPlay();
 }
 
-nextSlideBtn.addEventListener("click", () => {
+nextSlideBtn.addEventListener('click', () => {
   showNextSlide();
   resetAutoPlay();
 });
-previousSlideBtn.addEventListener("click", () => {
+previousSlideBtn.addEventListener('click', () => {
   showPreviousSlide();
   resetAutoPlay();
 });
 
 dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
+  dot.addEventListener('click', () => {
     goToSlide(index);
     resetAutoPlay();
   });
 });
 
-offerContainer.addEventListener("mouseenter", stopAutoPlay);
-offerContainer.addEventListener("mouseleave", startAutoPlay);
-offerContainer.addEventListener("focus", stopAutoPlay, true);
-offerContainer.addEventListener("blur", startAutoPlay, true);
+offerContainer.addEventListener('mouseenter', stopAutoPlay);
+offerContainer.addEventListener('mouseleave', startAutoPlay);
+offerContainer.addEventListener('focus', stopAutoPlay, true);
+offerContainer.addEventListener('blur', startAutoPlay, true);
 
 startAutoPlay();
 // Mobile Swiper
 let current = 0;
 let moved = 0;
 let diff;
-offer.addEventListener("touchstart", (e) => {
+offer.addEventListener('touchstart', (e) => {
   current = e.touches[0].clientX;
 });
-offer.addEventListener("touchmove", (e) => {
+offer.addEventListener('touchmove', (e) => {
   moved = e.touches[0].clientX;
   diff = moved - current;
 });
-offer.addEventListener("touchend", () => {
+offer.addEventListener('touchend', () => {
   if (diff < -50) {
     showNextSlide();
     resetAutoPlay();
@@ -170,39 +170,39 @@ offer.addEventListener("touchend", () => {
 // slide offer Images .........=
 
 // Cart Functions .........=
-const cartBtn = document.getElementById("cartBtn");
-const cartBtnMobile = document.querySelector(".cartBoxMobile");
-const cartCloseBtn = document.getElementById("cartCloseBtn");
-const cartModalBox = document.querySelector(".cartModal");
+const cartBtn = document.getElementById('cartBtn');
+const cartBtnMobile = document.querySelector('.cartBoxMobile');
+const cartCloseBtn = document.getElementById('cartCloseBtn');
+const cartModalBox = document.querySelector('.cartModal');
 let showCartBox = false;
 function showCartToggle() {
   if (showCartBox) {
-    cartModalBox.style.display = "block";
+    cartModalBox.style.display = 'block';
   } else {
-    cartModalBox.style.display = "none";
+    cartModalBox.style.display = 'none';
   }
 }
 showCartToggle();
-cartBtn.addEventListener("click", () => {
+cartBtn.addEventListener('click', () => {
   showCartBox = true;
   showCartToggle();
 });
-cartBtnMobile.addEventListener("click", () => {
+cartBtnMobile.addEventListener('click', () => {
   showCartBox = true;
   showCartToggle();
 });
-cartCloseBtn.addEventListener("click", () => {
+cartCloseBtn.addEventListener('click', () => {
   showCartBox = false;
   showCartToggle();
 });
-let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
 // Cart Functions .........=
 
 // Getting smartPhones .........=
-const phoneCards = document.querySelector(".phoneCards");
+const phoneCards = document.querySelector('.phoneCards');
 function showLoader(ele) {
   ele.insertAdjacentHTML(
-    "beforeend",
+    'beforeend',
     `
     <div class="loaderContainer">
               <div class="loader"></div>
@@ -211,7 +211,7 @@ function showLoader(ele) {
   );
 }
 function hideLoader(ele) {
-  const loader = ele.querySelector(".loaderContainer");
+  const loader = ele.querySelector('.loaderContainer');
   if (loader) {
     loader.remove();
   }
@@ -219,7 +219,7 @@ function hideLoader(ele) {
 function renderSmartPhones(data = []) {
   data.forEach((phone) => {
     phoneCards.insertAdjacentHTML(
-      "beforeend",
+      'beforeend',
       `
       <article class="phoneCard">
         <div class="phoneImage">
@@ -256,7 +256,7 @@ async function getSmartPhones() {
   showLoader(phoneCards);
   try {
     const response = await fetch(
-      "https://dummyjson.com/products/category/smartphones"
+      'https://dummyjson.com/products/category/smartphones'
     );
     if (!response.ok) {
       throw new Error(`Response Status: ${response.status}`);
@@ -265,9 +265,9 @@ async function getSmartPhones() {
     const smartPhones = data.products.slice(0, 6);
     renderSmartPhones(smartPhones);
     disableAddedButtons();
-    const addToCartBtns = document.querySelectorAll(".addToCartBtn");
+    const addToCartBtns = document.querySelectorAll('.addToCartBtn');
     addToCartBtns?.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
+      btn.addEventListener('click', (e) => {
         const item = smartPhones.find((ele) => ele.id == e.target.dataset.id);
         addToCart(item);
       });
@@ -282,8 +282,8 @@ getSmartPhones();
 // Getting smartPhones .........=
 
 // To Top Button .........=
-const toTopBtn = document.getElementById("toTop");
-window.addEventListener("scroll", () => {
+const toTopBtn = document.getElementById('toTop');
+window.addEventListener('scroll', () => {
   if (window.scrollY >= 100) {
     toTopBtn.style.opacity = 1;
     toTopBtn.style.transform = `translateY(0px)`;
@@ -292,23 +292,23 @@ window.addEventListener("scroll", () => {
     toTopBtn.style.transform = `translateY(100px)`;
   }
 });
-toTopBtn.addEventListener("click", () => {
+toTopBtn.addEventListener('click', () => {
   document.documentElement.scrollTo({
     top: 0,
-    behavior: "smooth",
+    behavior: 'smooth',
   });
 });
 // To Top Button .........=
 
 // Toast Function .........=
-const toast = document.querySelector(".toast");
-const toastText = document.querySelector(".toastText");
+const toast = document.querySelector('.toast');
+const toastText = document.querySelector('.toastText');
 function showToast(ele) {
   toastText.textContent = `${ele.name} added to cart successfully`;
-  toast.style.transform = "translateX(0px)";
+  toast.style.transform = 'translateX(0px)';
   toast.style.opacity = 1;
   setTimeout(() => {
-    toast.style.transform = "translateX(500px)";
+    toast.style.transform = 'translateX(500px)';
     toast.style.opacity = 0;
   }, 3000);
 }
@@ -316,12 +316,12 @@ function showToast(ele) {
 
 // Daily Essentials .........=
 const dailyEssBrandsContainer = document.querySelector(
-  ".dailyEssBrandsContainer"
+  '.dailyEssBrandsContainer'
 );
 function renderDailyEssentials(data = []) {
   data.forEach((product) => {
     dailyEssBrandsContainer.insertAdjacentHTML(
-      "beforeend",
+      'beforeend',
       `
       <article class="dailyEssBrandContainer">
               <div class="imageBox">
@@ -342,7 +342,7 @@ async function getDailyEssentials() {
   showLoader(dailyEssBrandsContainer);
   try {
     const response = await fetch(
-      "https://dummyjson.com/products/category/groceries"
+      'https://dummyjson.com/products/category/groceries'
     );
     if (!response.ok) {
       throw new Error(`Response Status: ${response.status}`);
@@ -376,22 +376,22 @@ function addToCart(item) {
       ),
   };
   cart.push(newCartItem);
-  localStorage.setItem("cartItems", JSON.stringify(cart));
+  localStorage.setItem('cartItems', JSON.stringify(cart));
   showToast(newCartItem);
   updateCart();
   disableAddedButtons();
 }
-const cartItemsBox = document.querySelector(".cartItemsBox");
+const cartItemsBox = document.querySelector('.cartItemsBox');
 function updateCart() {
   if (!cart) return;
-  const cartItemQty = document.querySelector(".cartItemQty");
-  const cartItemQtyMob = document.getElementById("cartItemQty");
+  const cartItemQty = document.querySelector('.cartItemQty');
+  const cartItemQtyMob = document.getElementById('cartItemQty');
   cartItemQty.textContent = `${cart.length}`;
   cartItemQtyMob.textContent = `${cart.length}`;
-  cartItemsBox.innerHTML = "";
+  cartItemsBox.innerHTML = '';
   cart.forEach((item) => {
     cartItemsBox.insertAdjacentHTML(
-      "afterbegin",
+      'afterbegin',
       `
       <div class="cartItem" data-id=${item.id}>
       <div class="item">
@@ -421,49 +421,49 @@ updateCart();
 // Add to Cart Function .........=
 function updateTotalPrice() {
   let total = 0;
-  const cardTotalPrice = document.getElementById("cartTotalPrice");
+  const cardTotalPrice = document.getElementById('cartTotalPrice');
   cart.forEach((item) => {
     total = total + item.qty * item.price;
   });
   cardTotalPrice.textContent = `${total} EGP`;
 }
 function updateQuantity() {
-  const decrease = document.querySelectorAll(".decreaseQty");
-  const increase = document.querySelectorAll(".increaseQty");
+  const decrease = document.querySelectorAll('.decreaseQty');
+  const increase = document.querySelectorAll('.increaseQty');
   increase.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const id = btn.closest(".cartItem").dataset.id;
+    btn.addEventListener('click', (e) => {
+      const id = btn.closest('.cartItem').dataset.id;
       const item = cart.find((ele) => ele.id == id);
-      const quantityText = btn.closest(".cartItem").querySelector(".quantity");
+      const quantityText = btn.closest('.cartItem').querySelector('.quantity');
       const totalPrice = btn
-        .closest(".cartItem")
-        .querySelector(".itemTotalPrice");
+        .closest('.cartItem')
+        .querySelector('.itemTotalPrice');
       item.qty++;
       totalPrice.textContent = `Total: ${item.price * item.qty} EGP`;
       quantityText.textContent = item.qty;
 
-      localStorage.setItem("cartItems", JSON.stringify(cart));
+      localStorage.setItem('cartItems', JSON.stringify(cart));
       updateTotalPrice();
     });
   });
   decrease.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const id = btn.closest(".cartItem").dataset.id;
-      const cartItemBox = btn.closest(".cartItem");
+    btn.addEventListener('click', (e) => {
+      const id = btn.closest('.cartItem').dataset.id;
+      const cartItemBox = btn.closest('.cartItem');
       const item = cart.find((ele) => ele.id == id);
-      const quantityText = cartItemBox.querySelector(".quantity");
-      const totalPrice = cartItemBox.querySelector(".itemTotalPrice");
+      const quantityText = cartItemBox.querySelector('.quantity');
+      const totalPrice = cartItemBox.querySelector('.itemTotalPrice');
       item.qty--;
       if (item.qty === 0) {
         cartItemBox.remove();
         cart = cart.filter((item) => item.qty >= 1);
-        localStorage.setItem("cartItems", JSON.stringify(cart));
+        localStorage.setItem('cartItems', JSON.stringify(cart));
         enableAddedButtons();
         updateCart();
       } else {
         totalPrice.textContent = `Total: ${item.price * item.qty} EGP`;
         quantityText.textContent = item.qty;
-        localStorage.setItem("cartItems", JSON.stringify(cart));
+        localStorage.setItem('cartItems', JSON.stringify(cart));
       }
       updateTotalPrice();
     });
@@ -472,30 +472,30 @@ function updateQuantity() {
 
 // Disable Buttons Function .........=
 function disableAddedButtons() {
-  const buttons = document.querySelectorAll(".addToCartBtn");
+  const buttons = document.querySelectorAll('.addToCartBtn');
 
   buttons.forEach((btn) => {
     const id = btn.dataset.id;
     const inCart = cart.find((item) => item.id == id);
 
     if (inCart) {
-      btn.classList.add("disabled");
-      btn.textContent = "Added";
-      btn.setAttribute("disabled", "true");
+      btn.classList.add('disabled');
+      btn.textContent = 'Added';
+      btn.setAttribute('disabled', 'true');
     }
   });
 }
 function enableAddedButtons() {
-  const buttons = document.querySelectorAll(".addToCartBtn");
+  const buttons = document.querySelectorAll('.addToCartBtn');
 
   buttons.forEach((btn) => {
     const id = btn.dataset.id;
     const inCart = cart.find((item) => item.id == id);
 
     if (!inCart) {
-      btn.classList.remove("disabled");
-      btn.textContent = "Add to cart";
-      btn.removeAttribute("disabled");
+      btn.classList.remove('disabled');
+      btn.textContent = 'Add to cart';
+      btn.removeAttribute('disabled');
     }
   });
 }
@@ -517,7 +517,7 @@ const observe = new IntersectionObserver(
     threshold: 0.2,
   }
 );
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll('section');
 
 sections.forEach((sec) => {
   observe.observe(sec);
@@ -525,8 +525,12 @@ sections.forEach((sec) => {
 // Section Animation .........=
 
 // Search Functions .........=
-const searchElePc = document.getElementById("searchTextPC");
-const searchEleMob = document.getElementById("searchTextMobile");
+const searchElePc = document.getElementById('searchTextPC');
+const searchEleMob = document.getElementById('searchTextMobile');
+const searchResultContainer = document.querySelector('.searchResultContiner');
+const searchResultContainerMobile = document.querySelector(
+  '.searchResultContinerMobile'
+);
 
 async function searchProduct(text) {
   try {
@@ -535,8 +539,69 @@ async function searchProduct(text) {
     );
     if (!response.ok) return;
     const data = await response.json();
-    const searchResult = data.products;
-    console.log(searchResult);
+    const searchResult = data.products.slice(0, 4);
+    if (searchResult) {
+      searchResultContainer.style.display = 'block';
+      searchResultContainerMobile.style.display = 'block';
+      searchResultContainer.innerHTML = '';
+      searchResultContainerMobile.innerHTML = '';
+    }
+    searchResult.forEach((res) => {
+      searchResultContainer.insertAdjacentHTML(
+        'beforeend',
+        `
+          <div class="searchResultItem">
+                <div class="searchItemDetails">
+                  <div class="searchItemImageBox">
+                    <img src=${res.images[2]} alt="" />
+                  </div>
+                  <div class="searchItemText">
+                    <h3>${res.title}</h3>
+                    <p>Price: ${Math.round(res.price * 48)} EGP</p>
+                  </div>
+                </div>
+                <button class="searchItemAdd" data-id=${
+                  res.id
+                }>Add to Cart</button>
+              </div>
+        `
+      );
+      searchResultContainerMobile.insertAdjacentHTML(
+        'beforeend',
+        `
+          <div class="searchResultItem">
+                <div class="searchItemDetails">
+                  <div class="searchItemImageBox">
+                    <img src=${res.images[2]} alt="" />
+                  </div>
+                  <div class="searchItemText">
+                    <h3>${res.title}</h3>
+                    <p>Price: ${Math.round(res.price * 48)} EGP</p>
+                  </div>
+                </div>
+                <button class="searchItemAddMobile" data-id=${
+                  res.id
+                }>Add to Cart</button>
+              </div>
+        `
+      );
+    });
+    const addToCartBtns = document.querySelectorAll('.searchItemAdd');
+    addToCartBtns?.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const item = searchResult.find((ele) => ele.id == e.target.dataset.id);
+        addToCart(item);
+      });
+    });
+    const addToCartBtnsMobile = document.querySelectorAll(
+      '.searchItemAddMobile'
+    );
+    addToCartBtnsMobile?.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const item = searchResult.find((ele) => ele.id == e.target.dataset.id);
+        addToCart(item);
+      });
+    });
   } catch (error) {
     console.error(error);
   }
@@ -551,7 +616,34 @@ const debounce = (fn, time) => {
   };
 };
 const debounceSearch = debounce(searchProduct, 500);
-searchElePc.addEventListener("input", (e) => {
+searchElePc.addEventListener('input', (e) => {
+  if (e.target.value.trim() === '') {
+    searchResultContainer.style.display = 'none';
+    return;
+  }
   debounceSearch(e.target.value);
+});
+searchEleMob.addEventListener('input', (e) => {
+  if (e.target.value.trim() === '') {
+    searchResultContainerMobile.style.display = 'none';
+    return;
+  }
+  debounceSearch(e.target.value);
+});
+searchElePc.addEventListener('blur', () => {
+  searchResultContainer.style.display = 'none';
+});
+searchEleMob.addEventListener('blur', () => {
+  searchResultContainerMobile.style.display = 'none';
+});
+searchElePc.addEventListener('focus', (e) => {
+  if (e.target.value.trim() !== '') {
+    searchResultContainer.style.display = 'block';
+  }
+});
+searchEleMob.addEventListener('focus', (e) => {
+  if (e.target.value.trim() !== '') {
+    searchResultContainerMobile.style.display = 'block';
+  }
 });
 // Search Functions .........=
