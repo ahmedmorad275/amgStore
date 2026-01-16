@@ -503,6 +503,7 @@ disableAddedButtons();
 enableAddedButtons();
 // Disable Buttons Function .........=
 
+// Section Animation .........=
 const observe = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -521,3 +522,36 @@ const sections = document.querySelectorAll("section");
 sections.forEach((sec) => {
   observe.observe(sec);
 });
+// Section Animation .........=
+
+// Search Functions .........=
+const searchElePc = document.getElementById("searchTextPC");
+const searchEleMob = document.getElementById("searchTextMobile");
+
+async function searchProduct(text) {
+  try {
+    const response = await fetch(
+      `https://dummyjson.com/products/search?q=${text}`
+    );
+    if (!response.ok) return;
+    const data = await response.json();
+    const searchResult = data.products;
+    console.log(searchResult);
+  } catch (error) {
+    console.error(error);
+  }
+}
+const debounce = (fn, time) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn(...args);
+    }, time);
+  };
+};
+const debounceSearch = debounce(searchProduct, 500);
+searchElePc.addEventListener("input", (e) => {
+  debounceSearch(e.target.value);
+});
+// Search Functions .........=
