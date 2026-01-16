@@ -814,7 +814,7 @@ a:hover {
 section {
   transition: all 0.5s ease-in-out;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateX(40px);
 }
 
 /* Medium Screens */

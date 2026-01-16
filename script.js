@@ -507,7 +507,7 @@ const observe = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.style.transform = `translateY(0px)`;
+        entry.target.style.transform = `translateX(0px)`;
         entry.target.style.opacity = 1;
       }
     });
