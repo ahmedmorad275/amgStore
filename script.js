@@ -415,11 +415,11 @@ function updateCart() {
     );
   });
   updateQuantity();
-  updateTotalPrice()
+  updateTotalPrice();
 }
 updateCart();
 // Add to Cart Function .........=
-function updateTotalPrice(){
+function updateTotalPrice() {
   let total = 0;
   const cardTotalPrice = document.getElementById("cartTotalPrice");
   cart.forEach((item) => {
@@ -443,7 +443,7 @@ function updateQuantity() {
       quantityText.textContent = item.qty;
 
       localStorage.setItem("cartItems", JSON.stringify(cart));
-      updateTotalPrice()
+      updateTotalPrice();
     });
   });
   decrease.forEach((btn) => {
@@ -465,7 +465,7 @@ function updateQuantity() {
         quantityText.textContent = item.qty;
         localStorage.setItem("cartItems", JSON.stringify(cart));
       }
-      updateTotalPrice()
+      updateTotalPrice();
     });
   });
 }
@@ -502,3 +502,22 @@ function enableAddedButtons() {
 disableAddedButtons();
 enableAddedButtons();
 // Disable Buttons Function .........=
+
+const observe = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transform = `translateY(0px)`;
+        entry.target.style.opacity = 1;
+      }
+    });
+  },
+  {
+    threshold: 0.2,
+  }
+);
+const sections = document.querySelectorAll("section");
+
+sections.forEach((sec) => {
+  observe.observe(sec);
+});
