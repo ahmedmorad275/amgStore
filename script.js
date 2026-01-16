@@ -631,10 +631,14 @@ searchEleMob.addEventListener('input', (e) => {
   debounceSearch(e.target.value);
 });
 searchElePc.addEventListener('blur', () => {
-  searchResultContainer.style.display = 'none';
+  setTimeout(() => {
+    searchResultContainer.style.display = 'none';
+  }, 1500);
 });
 searchEleMob.addEventListener('blur', () => {
-  searchResultContainerMobile.style.display = 'none';
+  setTimeout(() => {
+    searchResultContainerMobile.style.display = 'none';
+  }, 1500);
 });
 searchElePc.addEventListener('focus', (e) => {
   if (e.target.value.trim() !== '') {
