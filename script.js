@@ -527,9 +527,9 @@ sections.forEach((sec) => {
 // Search Functions .........=
 const searchElePc = document.getElementById('searchTextPC');
 const searchEleMob = document.getElementById('searchTextMobile');
-const searchResultContainer = document.querySelector('.searchResultContiner');
+const searchResultContainer = document.querySelector('.searchResultContainer');
 const searchResultContainerMobile = document.querySelector(
-  '.searchResultContinerMobile'
+  '.searchResultContainerMobile'
 );
 
 async function searchProduct(text) {
